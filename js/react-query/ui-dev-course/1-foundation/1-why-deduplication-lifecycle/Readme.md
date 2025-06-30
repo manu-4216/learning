@@ -29,7 +29,7 @@ instantly available. This makes managing it, particularly over time, tricky.
 
 Though it's far too common, it's problematic to treat these two kinds of states as equal.
 
-To manage client state in a React app, we have lots of options available, starting from the built-in hooks like useState and useReducer, all the way up to community maintained solutions like redux or zustand.
+To manage client state in a React app, we have lots of options available, starting from the built-in hooks like `useState` and `useReducer`, all the way up to community maintained solutions like `redux` or `zustand`.
 
 But what are our options for managing server state in a React app?
 
@@ -123,26 +123,26 @@ export default function Root() {
 
 React Query uses React Context under the hood. However, instead of using Context for state management as we saw previously, React Query uses it solely for dependency injection.
 
-Under the hood, useQuery will subscribe to the QueryCache and re-render whenever the data it cares about in the cache changes.
+Under the hood, `useQuery` will subscribe to the `QueryCache` and re-render whenever the data it cares about in the cache changes.
 
-By default, if there's already data located in the cache at the queryKey, useQuery will return that data immediately.
+By default, if there's already data located in the cache at the `queryKey`, `useQuery` will return that data immediately.
 
-Otherwise, it will invoke the queryFn, take whatever data that the promise returned from the queryFn resolves with, put it in the cache at the queryKey, and then return it.
+Otherwise, it will invoke the `queryFn`, take whatever data that the promise returned from the queryFn resolves with, put it in the cache at the `queryKey`, and then return it.
 
-This is called **Deduplication**, and it works even across different components: if one component already used a query and fetched its data, a second component will get the same data, which has been cached.
+This is called **Deduplication**, and it works even across different components: if one component already used a query and fetched its data, a second component will get the **same data**, which has been cached.
 
-Under the hood, the reason this works is all thanks to Query Observers and a well-known software design pattern called
+Under the hood, the reason this works is all thanks to Query _Observers_ and a well-known software design pattern called
 The Observer Pattern.
 
 Since our cache lives outside of React, we need a way to synchronize the values from the cache back to our React components. Observers are the glue between those components and the queries in the cache.
 
-Every time a component mounts, it creates an observer for each call to useQuery. This observer watches (or observes) a specific queryKey.
+Every time a component mounts, it creates an observer for each call to `useQuery`. This observer watches (or observes) a specific `queryKey`.
 
-When something in the cache for the queryKey changes, the observer will be notified so that it can re-render the component - thus keeping our UI in sync with the value in the cache.
+When something in the cache for the `queryKey` changes, the observer will be notified so that it can re-render the component - thus keeping our UI in sync with the value in the cache.
 
-This means we'll get maximum predictability since every component will always show exactly what is stored in the cache, while at the same time being highly performant by only calling the queryFn when necessary.
+This means we'll get maximum predictability since every component will always show exactly what is stored in the cache, while at the same time being highly performant by only calling the `queryFn` when necessary.
 
-And it doesn't matter where those components are in the component tree. As long as they live under the same QueryClientProvider, they will read the same cache.
+And it doesn't matter where those components are in the component tree. As long as they live under the same `QueryClientProvider`, they will read the same cache.
 
 ### Query state
 
@@ -185,9 +185,9 @@ function MediaDevices() {
 
 #### Second option:
 
-The second option, via the derived boolean flags, isPending, isSuccess and isError that are also available on the object returned by useQuery.
+The second option, via the derived boolean flags, `isPending`, `isSuccess` and `isError` that are also available on the object returned by `useQuery`.
 
-The object returned from useQuery is a Discriminated Union Type, and it's both discriminated by the status field and the derived boolean flags.
+The object returned from `useQuery` is a **Discriminated Union Type**, and it's both discriminated by the `status` field and the derived boolean flags.
 
 ```js
 function MediaDevices() {

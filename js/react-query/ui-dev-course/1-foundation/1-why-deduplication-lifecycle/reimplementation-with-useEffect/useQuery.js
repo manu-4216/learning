@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-// custom generic hook for data fetchingm done by hand, using useEffect
+// custom generic hook for data fetching done by hand, using useEffect
 export default function useQuery(url) {
   const [data, setData] = React.useState(null)
   const [isLoading, setIsLoading] = React.useState(true)

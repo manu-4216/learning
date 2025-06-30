@@ -30,6 +30,7 @@ export class QueryClient {
   // add the listener callback to the listeners array
   subscribe(listener) {
     this.listeners.add(listener)
+    // return the unsubscribe callback
     return () => this.listeners.delete(listener)
   }
 
@@ -54,7 +55,7 @@ export class QueryClient {
       ...queryItem,
     })
 
-    // notify ALL the listeners of a change (cache item set).
+    // after an update, notify ALL the listeners about a change in the stored value.
     // Invoke them with the queryKey so that each will know which Query item was updated.
     this.listeners.forEach((listener) => {
       listener(queryKey)
