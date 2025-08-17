@@ -3,3 +3,4 @@ bin
 lib
 .venv
 js/projects
+.DS_Store

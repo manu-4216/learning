@@ -14,4 +14,4 @@ I will transcribe here important code snippets from various chapters.
 
 ### Creators:
 
-[Tyler](!https://x.com/tylermcginnis), [Dominik](!https://x.com/tkdodo), [Lynn](!https://x.com/lynnandtonic), and [Ben](!https://x.com/benadam11)
+[Tyler](https://x.com/tylermcginnis), [Dominik](https://x.com/tkdodo), [Lynn](https://x.com/lynnandtonic), and [Ben](https://x.com/benadam11)
